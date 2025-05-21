@@ -7,7 +7,7 @@ public sealed class Category
     public CategoryId CategoryId { get; set; }
     public Name  Name { get; set; }
     public Description  Description { get; set; }
-    public PostCount PostCount { get; set; }
+    public PostCount PostCount { get; set; } 
     public ImageUrl  ImageUrl { get; set; }
     private Category(CategoryId categoryId, Name name, Description description, PostCount postCount, ImageUrl imageUrl)
     {

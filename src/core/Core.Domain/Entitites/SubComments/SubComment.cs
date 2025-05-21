@@ -5,13 +5,14 @@ using Core.Domain.Entities.Posts.ValueObjects;
 using Core.Domain.Entities.SubComments.ValueObjects;
 using Core.Domain.Entities.Users;
 using Core.Domain.Entities.Users.ValueObjects;
+using Core.Domain.Entitites.SubComments.ValueObjects;
 
 namespace Core.Domain.Entities.SubComments
 {
     public sealed class SubComment
     {
         public SubCommentId SubCommentId { get; set; }
-        public Content Content { get; set; }
+        public SubCommentContent SubCommentContent { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public CommentId CommentId { get; set; }

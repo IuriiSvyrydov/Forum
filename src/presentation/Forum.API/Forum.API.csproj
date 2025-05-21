@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Forum.ServiceDefaults\Forum.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\..\infrastructure\Forum.Persistence\Forum.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

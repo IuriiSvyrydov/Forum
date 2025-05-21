@@ -8,12 +8,13 @@ using Core.Domain.Entities.SubComments;
 using Core.Domain.Entities.Users;
 using Core.Domain.Entities.Users.ValueObjects;
 using Core.Domain.Posts.ValueObjects;
+
 namespace Core.Domain.Entities.Comments;
 
    public sealed class Comment
     {
     public CommentId CommentId { get; set; }
-    public Content Content { get; set; }
+    public CommentContent Content { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public UserId   UserId { get; set; }
     public PostId PostId { get; set; }

@@ -21,7 +21,7 @@ namespace Core.Domain.Entities.Posts
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public UserId UserId { get; set; }
         public CategoryId CategoryId { get; set; } 
-        public int StatusId { get; set; } = 1; 
+        public int StatusId { get; set; } 
         public DateTime? ModifiedAt { get; set; }
         public bool IsDeleted { get; set; } = false;
         public DateTime? DeletedAt { get; set; }

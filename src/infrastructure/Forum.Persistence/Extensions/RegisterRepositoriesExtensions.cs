@@ -6,6 +6,7 @@ using Forum.Persistence.Repositories.Categories;
 using Forum.Persistence.Repositories.GenericRepositories;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace Forum.Persistence.Extensions;
 
 public static class RegisterRepositoriesExtensions
@@ -23,6 +24,7 @@ public static class RegisterRepositoriesExtensions
         #endregion
         #region Category Repositories
         services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
+        services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
         #endregion
     }
     
