@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Entitites\Categories\Events\" />
+    <Folder Include="Common\Results\" />
+    <Folder Include="Common\Errors\" />
+    <Folder Include="Entitites\Comments\Events\" />
+    <Folder Include="Entitites\Posts\Events\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.5.0" />
+  </ItemGroup>
+
 </Project>
