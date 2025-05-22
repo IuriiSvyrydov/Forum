@@ -1,6 +1,7 @@
 using Core.Domain.Entities.Comments;
 using Core.Domain.Entities.Comments.ValueObjects;
 using Core.Domain.Entities.Users.ValueObjects;
+using Core.Domain.Entitites.Comments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Forum.Persistence.Converters;

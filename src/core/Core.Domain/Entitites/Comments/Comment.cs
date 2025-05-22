@@ -1,15 +1,11 @@
-﻿
-
-
-using Core.Domain.Entities.Comments.ValueObjects;
+﻿using Core.Domain.Entities.Comments.ValueObjects;
 using Core.Domain.Entities.Posts;
-using Core.Domain.Entities.Posts.ValueObjects;
 using Core.Domain.Entities.SubComments;
 using Core.Domain.Entities.Users;
 using Core.Domain.Entities.Users.ValueObjects;
 using Core.Domain.Posts.ValueObjects;
 
-namespace Core.Domain.Entities.Comments;
+namespace Core.Domain.Entitites.Comments;
 
    public sealed class Comment
     {

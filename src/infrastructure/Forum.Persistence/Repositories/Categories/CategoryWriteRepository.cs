@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Core.Domain.Common;
 using Core.Domain.Entities;
 using Core.Domain.Entities.Categories;
+using Core.Domain.Entitites.Categories;
 using Forum.Persistence.EntityFramework;
 using Forum.Persistence.Repositories.GenericRepositories;
 

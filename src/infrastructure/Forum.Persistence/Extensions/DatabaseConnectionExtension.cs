@@ -1,8 +1,4 @@
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Forum.Persistence.EntityFramework;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Forum.Persistence.Extensions
 {
