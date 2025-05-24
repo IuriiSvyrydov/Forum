@@ -34,10 +34,10 @@ public sealed class AppDbContext: DbContext
  
 
         
-        modelBuilder.Entity<CategoryId>().HasNoKey();
-        modelBuilder.Entity<CommentId>().HasNoKey();
-        modelBuilder.Entity<SubCommentId>().HasNoKey();
-        modelBuilder.Entity<UserId>().HasNoKey();
+     //   modelBuilder.Entity<CategoryId>().HasNoKey();
+       // modelBuilder.Entity<CommentId>().HasNoKey();
+       // modelBuilder.Entity<SubCommentId>().HasNoKey();
+        //modelBuilder.Entity<UserId>().HasNoKey();
 
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);

@@ -1,8 +1,7 @@
-﻿
-using Core.Domain.Common;
+﻿using Core.Domain.Common;
 using Core.Domain.Common.Results;
 
-namespace Core.Domain.Posts.ValueObjects;
+namespace Core.Domain.Entitites.Posts.ValueObjects;
 
 public class PostId : ValueObject<Guid>
 {

@@ -1,5 +1,5 @@
 ﻿using Core.Domain.Entities.Posts;
-using Core.Domain.Posts.ValueObjects;
+using Core.Domain.Entitites.Posts.ValueObjects;
 using Forum.Persistence.EntityFramework;
 using Forum.Persistence.Repositories.GenericRepositories;
 

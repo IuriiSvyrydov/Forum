@@ -1,8 +1,7 @@
 using Core.Domain.Common;
 using Core.Domain.Common.Results;
-using Core.Domain.Entities.SubComments.ValueObjects;
 
-namespace Core.Domain.Entities.Users.ValueObjects
+namespace Core.Domain.Entitites.Users.ValueObjects
 {
     public class UserId : ValueObject<Guid>
     {

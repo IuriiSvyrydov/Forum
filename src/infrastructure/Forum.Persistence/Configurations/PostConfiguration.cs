@@ -30,7 +30,11 @@ namespace Forum.Persistence.Configurations
                 .IsRequired();
             builder.Property(p => p.UserId)
                 .HasConversion<UserIdConverter, UserIdComparer>();
-
+            builder.HasOne(p => p.User)
+                .WithMany()
+                .HasForeignKey(p => p.UserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

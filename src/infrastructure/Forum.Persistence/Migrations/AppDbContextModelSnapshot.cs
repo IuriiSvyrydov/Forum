@@ -50,50 +50,6 @@ namespace Forum.Persistence.Migrations
                     b.ToTable("categories", (string)null);
                 });
 
-            modelBuilder.Entity("Core.Domain.Entities.Categories.ValueObjects.CategoryId", b =>
-                {
-                    b.Property<Guid>("Value")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.ToTable("CategoryId");
-                });
-
-            modelBuilder.Entity("Core.Domain.Entities.Comments.Comment", b =>
-                {
-                    b.Property<Guid>("CommentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("PostId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("CommentId");
-
-                    b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("comments", (string)null);
-                });
-
-            modelBuilder.Entity("Core.Domain.Entities.Comments.ValueObjects.CommentId", b =>
-                {
-                    b.Property<Guid>("Value")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.ToTable("CommentId");
-                });
-
             modelBuilder.Entity("Core.Domain.Entities.Posts.Post", b =>
                 {
                     b.Property<Guid>("PostId")
@@ -160,46 +116,6 @@ namespace Forum.Persistence.Migrations
                     b.ToTable("post_status", (string)null);
                 });
 
-            modelBuilder.Entity("Core.Domain.Entities.SubComments.SubComment", b =>
-                {
-                    b.Property<Guid>("SubCommentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CommentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CommentId2")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SubCommentContent")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("SubCommentId");
-
-                    b.HasIndex("CommentId");
-
-                    b.HasIndex("CommentId2");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("sub_comments", (string)null);
-                });
-
-            modelBuilder.Entity("Core.Domain.Entities.SubComments.ValueObjects.SubCommentId", b =>
-                {
-                    b.Property<Guid>("Value")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.ToTable("SubCommentId");
-                });
-
             modelBuilder.Entity("Core.Domain.Entities.Users.User", b =>
                 {
                     b.Property<Guid>("UserId")
@@ -236,31 +152,59 @@ namespace Forum.Persistence.Migrations
                     b.ToTable("users", (string)null);
                 });
 
-            modelBuilder.Entity("Core.Domain.Entities.Users.ValueObjects.UserId", b =>
+            modelBuilder.Entity("Core.Domain.Entitites.Comments.Comment", b =>
                 {
-                    b.Property<Guid>("Value")
+                    b.Property<Guid>("CommentId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.ToTable("UserId");
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("comments", (string)null);
                 });
 
-            modelBuilder.Entity("Core.Domain.Entities.Comments.Comment", b =>
+            modelBuilder.Entity("Core.Domain.Entitites.SubComments.SubComment", b =>
                 {
-                    b.HasOne("Core.Domain.Entities.Posts.Post", "Post")
-                        .WithMany("Comments")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<Guid>("SubCommentId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasOne("Core.Domain.Entities.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<Guid>("CommentId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Navigation("Post");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
-                    b.Navigation("User");
+                    b.Property<string>("SubCommentContent")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("SubCommentId");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("sub_comments", (string)null);
                 });
 
             modelBuilder.Entity("Core.Domain.Entities.Posts.Post", b =>
@@ -280,7 +224,7 @@ namespace Forum.Persistence.Migrations
                     b.HasOne("Core.Domain.Entities.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -290,22 +234,37 @@ namespace Forum.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Core.Domain.Entities.SubComments.SubComment", b =>
+            modelBuilder.Entity("Core.Domain.Entitites.Comments.Comment", b =>
                 {
-                    b.HasOne("Core.Domain.Entities.Comments.Comment", "Comment")
-                        .WithMany()
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("Core.Domain.Entities.Posts.Post", "Post")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("Core.Domain.Entities.Comments.Comment", null)
-                        .WithMany("SubComments")
-                        .HasForeignKey("CommentId2");
 
                     b.HasOne("Core.Domain.Entities.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Core.Domain.Entitites.SubComments.SubComment", b =>
+                {
+                    b.HasOne("Core.Domain.Entitites.Comments.Comment", "Comment")
+                        .WithMany("SubComments")
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Core.Domain.Entities.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Comment");
@@ -313,14 +272,14 @@ namespace Forum.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Core.Domain.Entities.Comments.Comment", b =>
-                {
-                    b.Navigation("SubComments");
-                });
-
             modelBuilder.Entity("Core.Domain.Entities.Posts.Post", b =>
                 {
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("Core.Domain.Entitites.Comments.Comment", b =>
+                {
+                    b.Navigation("SubComments");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Forum.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class init3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,26 +27,6 @@ namespace Forum.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoryId",
-                columns: table => new
-                {
-                    Value = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CommentId",
-                columns: table => new
-                {
-                    Value = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                });
-
-            migrationBuilder.CreateTable(
                 name: "post_status",
                 columns: table => new
                 {
@@ -56,26 +36,6 @@ namespace Forum.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_post_status", x => x.PostStatusId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SubCommentId",
-                columns: table => new
-                {
-                    Value = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserId",
-                columns: table => new
-                {
-                    Value = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
                 });
 
             migrationBuilder.CreateTable(
@@ -129,8 +89,7 @@ namespace Forum.Persistence.Migrations
                         name: "FK_posts_users_UserId",
                         column: x => x.UserId,
                         principalTable: "users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "UserId");
                 });
 
             migrationBuilder.CreateTable(
@@ -150,14 +109,12 @@ namespace Forum.Persistence.Migrations
                         name: "FK_comments_posts_PostId",
                         column: x => x.PostId,
                         principalTable: "posts",
-                        principalColumn: "PostId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PostId");
                     table.ForeignKey(
                         name: "FK_comments_users_UserId",
                         column: x => x.UserId,
                         principalTable: "users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "UserId");
                 });
 
             migrationBuilder.CreateTable(
@@ -165,11 +122,10 @@ namespace Forum.Persistence.Migrations
                 columns: table => new
                 {
                     SubCommentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SubCommentContent = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SubCommentContent = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CommentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CommentId2 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -178,19 +134,12 @@ namespace Forum.Persistence.Migrations
                         name: "FK_sub_comments_comments_CommentId",
                         column: x => x.CommentId,
                         principalTable: "comments",
-                        principalColumn: "CommentId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_sub_comments_comments_CommentId2",
-                        column: x => x.CommentId2,
-                        principalTable: "comments",
                         principalColumn: "CommentId");
                     table.ForeignKey(
                         name: "FK_sub_comments_users_UserId",
                         column: x => x.UserId,
                         principalTable: "users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "UserId");
                 });
 
             migrationBuilder.CreateIndex(
@@ -236,11 +185,6 @@ namespace Forum.Persistence.Migrations
                 column: "CommentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_sub_comments_CommentId2",
-                table: "sub_comments",
-                column: "CommentId2");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_sub_comments_UserId",
                 table: "sub_comments",
                 column: "UserId");
@@ -256,19 +200,7 @@ namespace Forum.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoryId");
-
-            migrationBuilder.DropTable(
-                name: "CommentId");
-
-            migrationBuilder.DropTable(
                 name: "sub_comments");
-
-            migrationBuilder.DropTable(
-                name: "SubCommentId");
-
-            migrationBuilder.DropTable(
-                name: "UserId");
 
             migrationBuilder.DropTable(
                 name: "comments");

@@ -1,4 +1,6 @@
+using Forum.API.Extention;
 using Forum.Persistence.Extensions;
+using Forum.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.RegisterRepositories();
 builder.Services.RegisterDatabaseConnection(builder.Configuration);
+builder.Services.RegisterAutoMapper();
+builder.Services.RegisterMediatr();
 
 var app = builder.Build();
 
@@ -19,8 +23,11 @@ app.MapDefaultEndpoints();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.MapOpenApi();
 }
+
+app.RegisterScalar();
 
 app.UseAuthorization();
 

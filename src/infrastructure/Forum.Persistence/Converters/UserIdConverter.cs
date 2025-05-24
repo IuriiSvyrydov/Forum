@@ -1,5 +1,6 @@
 using Core.Domain.Common.Results;
 using Core.Domain.Entities.Users.ValueObjects;
+using Core.Domain.Entitites.Users.ValueObjects;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 

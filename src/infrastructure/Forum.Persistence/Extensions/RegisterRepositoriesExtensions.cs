@@ -1,14 +1,4 @@
-﻿
-
-
-using Core.Domain.Entitites.Categories;
-using Core.Domain.Entitites.SubComments;
-using Core.Domain.Entitites.Users;
-using Forum.Persistence.Repositories.PostsStatus;
-using Forum.Persistence.Repositories.SubComments;
-using Forum.Persistence.Repositories.Users;
-
-namespace Forum.Persistence.Extensions;
+﻿namespace Forum.Persistence.Extensions;
 
 public static class RegisterRepositoriesExtensions
 {
@@ -17,7 +7,7 @@ public static class RegisterRepositoriesExtensions
         #region Generic Repositories
 
         services.AddScoped(typeof(IReadRepository<,>), typeof(ReadRepository<,>));
-        services.AddScoped(typeof(IWriteRepository<>), typeof(IWriteRepository<>));
+        services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
         #endregion
         #region Unit of Work

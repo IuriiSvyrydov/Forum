@@ -1,5 +1,5 @@
 using Core.Domain.Entities.Posts.ValueObjects;
-using Core.Domain.Posts.ValueObjects;
+using Core.Domain.Entitites.Posts.ValueObjects;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
